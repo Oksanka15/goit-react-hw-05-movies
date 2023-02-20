@@ -6,7 +6,7 @@ import { Movies } from "./pages/Movie/Movies";
 import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
 import { Reviwes } from "./Reviews/Reviews";
 import {Cast} from "./Cast/Cast";
-
+//1:52:06
 export const App = () => {
   return (
     <div style={{
