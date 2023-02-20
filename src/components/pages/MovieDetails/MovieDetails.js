@@ -8,8 +8,14 @@ import {
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { BASE_IMG_URL } from 'components/servises/constants';
+import {
+  Details,
+  DetailsOverview,
+  TextDetails,ButtonGoBack, PosterDetails
+} from '../MovieDetails/MovieDetails.styled';
 
-export const MovieDetails = () => {
+
+const MovieDetails = () => {
   const [details, setDetails] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,19 +31,22 @@ export const MovieDetails = () => {
   if (!details) {
     return null;
   }
+  const { title, poster_path, overview,  runtime } = details;
+  
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '300px',
-      }}
-    >
-      <h2>{details.title}</h2>
-      <button type="button" onClick={handleGoBack}>
-        Go back
-      </button>
-      <img src={BASE_IMG_URL + details.poster_path} alt={details.title} />
+    <Details>
+      <PosterDetails src={BASE_IMG_URL + poster_path}  alt={title} />
+      
+      <DetailsOverview>
+        {' '}<h2>{title}</h2>
+        <ButtonGoBack type="button" onClick={handleGoBack}>
+          Go back
+        </ButtonGoBack>
+        <h2>Overview:</h2>
+        <TextDetails>{overview}</TextDetails>
+        <TextDetails>RunTime: {runtime} minutes </TextDetails>
+       
+      </DetailsOverview>
       <NavLink to="cast" state={{ from: location.state.from }}>
         Cast
       </NavLink>
@@ -45,6 +54,7 @@ export const MovieDetails = () => {
         Reviews
       </NavLink>
       <Outlet />
-    </div>
+    </Details>
   );
 };
+export default MovieDetails;
