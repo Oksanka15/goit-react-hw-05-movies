@@ -1,27 +1,27 @@
-import { getMovieReviews } from "components/servises/apiServises";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { getMovieReviews } from 'components/servises/apiServises';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { BASE_IMG_URL } from 'components/servises/constants';
 import toast, { Toaster } from 'react-hot-toast';
 import {
-    ReviewList,
-    Review,
-    Author,
-    About,
-    Avatar,
-    Name,
-    ReviewDate,
-    Text,
-  } from './Reviews.styled';
+  ReviewList,
+  Review,
+  Author,
+  About,
+  Avatar,
+  Name,
+  ReviewDate,
+  Text,
+} from './Reviews.styled';
 
-const Reviwes =()=>{
-const [reviews, setReviews] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
-const {id} = useParams();
+const Reviwes = () => {
+  const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { id } = useParams();
 
-useEffect(() => {
+  useEffect(() => {
     setIsLoading(true);
     const fetchReviews = async () => {
       try {
@@ -37,8 +37,6 @@ useEffect(() => {
 
     fetchReviews();
   }, [id]);
-  
-
 
   return (
     <>
@@ -90,5 +88,5 @@ useEffect(() => {
       <Toaster />
     </>
   );
-}
+};
 export default Reviwes;
